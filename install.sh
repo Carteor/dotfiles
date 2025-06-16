@@ -30,12 +30,21 @@ else
     echo "fzf already installed"
 fi
 
-# Add other dependencies here as needed
-# Example:
-# if ! command_exists tmux; then
-#     echo "Installing tmux..."
-#     sudo apt install -y tmux
-# fi
+# Install powerline via pipx
+if ! command_exists pipx; then
+    echo "Installing pipx..."
+    if command_exists apt; then
+        sudo apt install -y pipx
+    else
+        python3 -m pip install --user pipx
+    fi
+    pipx ensurepath
+fi
+
+if ! command_exists powerline-daemon; then
+    echo "Installing powerline via pipx..."
+    pipx install powerline-status
+fi
 
 # Install TPM
 if [ ! -d ~/.tmux/plugins/tpm ]; then
