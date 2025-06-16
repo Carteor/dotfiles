@@ -5,6 +5,9 @@
 # mkdir -p ~/.config
 
 # Symlink nvim
+ln -sf ~/dotfiles/nvim ~/.config/nvim
+
+# Symlink tmux
 ln -sf ~/dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 # Symlink bash configs
