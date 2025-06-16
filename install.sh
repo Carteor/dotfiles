@@ -2,7 +2,7 @@
 # install.sh
 
 # Create necessary directories
-# mkdir -p ~/.config
+mkdir -p ~/.config
 
 # Symlink nvim
 ln -sf ~/dotfiles/nvim ~/.config/nvim
