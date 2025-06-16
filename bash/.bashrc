@@ -124,11 +124,6 @@ if [[ -z "$TMUX" ]]; then
     tmux attach -t mysession || tmux new -s mysession
 fi
 
-# Powerline for Bash/Zsh
-if [[ -r /usr/share/powerline/bindings/bash/powerline.sh ]]; then
-    source /usr/share/powerline/bindings/bash/powerline.sh
-fi
-
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/id_rsa

@@ -43,13 +43,6 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-# Install powerline
-if ! command_exists powerline-daemon; then
-	echo "Installing powerline..."
-	pip install --user powerline
-fi
-echo "Creating symlinks..."
-
 # Create necessary directories
 mkdir -p ~/.config
 
