@@ -152,3 +152,6 @@ fi
 
 # Force immediate save/load of history
 PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
+
+# Created by `pipx` on 2025-06-16 10:36:22
+export PATH="$PATH:/home/carte/.local/bin"
