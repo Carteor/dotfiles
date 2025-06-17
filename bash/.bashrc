@@ -120,6 +120,8 @@ export PATH=$PATH:/home/sayat/.local/bin
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 
+export WAYLAND_DISPLAY=wayland-0
+
 if [[ -z "$TMUX" ]]; then
     tmux attach -t mysession || tmux new -s mysession
 fi
