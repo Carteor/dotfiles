@@ -30,20 +30,20 @@ PACKAGE_MANAGER=$(get_package_manager)
 
 # Install system dependencies
 case $PACKAGE_MANAGER in
-    "apt")
-        echo "Updating package lists..."
-        sudo apt update || echo "Warning: apt update failed, continuing anyway..."
-        sudo apt install -y curl wget unzip fontconfig
-        ;;
-    "yum"|"dnf")
-        sudo $PACKAGE_MANAGER install -y curl wget unzip fontconfig
-        ;;
-    "pacman")
-        sudo pacman -S --noconfirm curl wget unzip fontconfig
-        ;;
-    "brew")
-        brew install curl wget unzip
-        ;;
+"apt")
+    echo "Updating package lists..."
+    sudo apt update || echo "Warning: apt update failed, continuing anyway..."
+    sudo apt install -y curl wget unzip fontconfig
+    ;;
+"yum" | "dnf")
+    sudo $PACKAGE_MANAGER install -y curl wget unzip fontconfig
+    ;;
+"pacman")
+    sudo pacman -S --noconfirm curl wget unzip fontconfig
+    ;;
+"brew")
+    brew install curl wget unzip
+    ;;
 esac
 
 # Install JetBrains Mono Nerd Font
@@ -90,26 +90,26 @@ fi
 if ! command_exists fzf; then
     echo "Installing fzf..."
     case $PACKAGE_MANAGER in
-        "apt")
-            sudo apt install -y fzf
-            ;;
-        "yum")
-            sudo yum install -y fzf
-            ;;
-        "dnf")
-            sudo dnf install -y fzf
-            ;;
-        "pacman")
-            sudo pacman -S --noconfirm fzf
-            ;;
-        "brew")
-            brew install fzf
-            ;;
-        *)
-            echo "Installing fzf via git..."
-            git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-            ~/.fzf/install --key-bindings --completion --no-update-rc
-            ;;
+    "apt")
+        sudo apt install -y fzf
+        ;;
+    "yum")
+        sudo yum install -y fzf
+        ;;
+    "dnf")
+        sudo dnf install -y fzf
+        ;;
+    "pacman")
+        sudo pacman -S --noconfirm fzf
+        ;;
+    "brew")
+        brew install fzf
+        ;;
+    *)
+        echo "Installing fzf via git..."
+        git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+        ~/.fzf/install --key-bindings --completion --no-update-rc
+        ;;
     esac
 else
     echo "fzf already installed"
@@ -133,8 +133,8 @@ fi
 
 # Install TPM
 if [ ! -d ~/.tmux/plugins/tpm ]; then
-	echo "Installing TPM (Tmux Plugin Manager)..."
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    echo "Installing TPM (Tmux Plugin Manager)..."
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 # Create necessary directories
@@ -193,7 +193,9 @@ if [ -f ~/dotfiles/starship/starship.toml ]; then
     echo "✓ Starship config linked"
 else
     echo "Warning: ~/dotfiles/starship/starship.toml not found"
-fi 
+fi
 
 echo "Dotfiles installed successfully!"
 echo "Please restart your terminal or run: source ~/.bashrc"
+echo "Refresh tmux: tmux source-file ~/.tmux.conf,"
+echo "and Prefix + I to install TPM plugins"
