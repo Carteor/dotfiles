@@ -113,7 +113,9 @@ bind 'set show-all-if-ambiguous on'
 
 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH="$PATH:/home/carte/.local/bin"
+export PATH="/home/sayat/.npm-global/bin:$PATH"
 export WAYLAND_DISPLAY=wayland-0
+export GEMINI_API_KEY="AIzaSyAsJ5EM6xBRAJiSREFQ0xOzuchE2S4h5sU"
 
 if [[ -z "$TMUX" ]]; then
     tmux attach -t mysession || tmux new -s mysession
@@ -144,3 +146,7 @@ fi
 PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
 eval "$(starship init bash)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
