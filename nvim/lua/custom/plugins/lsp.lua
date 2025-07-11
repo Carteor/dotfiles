@@ -134,13 +134,13 @@ return {
       })
 
       -- Auto-format on save
-      local format_group = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = format_group,
-        callback = function(args)
-          vim.lsp.buf.format({ bufnr = args.buf })
-        end,
-      })
+      -- local format_group = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   group = format_group,
+      --   callback = function(args)
+      --     vim.lsp.buf.format({ bufnr = args.buf })
+      --   end,
+      -- })
     end,
   },
 
