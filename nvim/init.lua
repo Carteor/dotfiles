@@ -11,6 +11,12 @@ vim.g.have_nerd_font = true
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
+vim.opt.tabstop = 4        -- number of visual spaces per tab
+vim.opt.softtabstop = 4    -- spaces inserted when hitting Tab
+vim.opt.shiftwidth = 4     -- spaces used for autoindent
+vim.opt.expandtab = true   -- use spaces instead of tab characters
+vim.opt.smartindent = true -- smarter auto-indenting
+vim.opt.autoindent = true  -- keep indent from current line
 
 -- Make line numbers default
 vim.opt.number = true
@@ -141,7 +147,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+--  'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following

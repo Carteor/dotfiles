@@ -147,6 +147,9 @@ fi
 #  export HISTFILE="$HOME/.bash_history"
 #fi
 
+# ChatGPT session token
+export TOKEN="eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..9uIYkn77NwiwiscU.mRkzha5y-cXyv4bWvE5L982svjYXlDYdj1I1X5w2URCTEm212AtP-Hx9eZ8JibssNQ9nS7Ye-SzgcGvuCDntoWBDcY3xHINzNzMjhckfckNCiQyVISTXk5YZG7K8y3a10-j4IQDzrfvnWF_Bp5o7ucX3qfi3FqgNuZBzkXyavB_orWT0PoWUBiyUIhbizBWbsppd6iBDCAoyUsPit4MVOJiP00HfiXFwhf-vWw-XPNwuQ8Rn4KuLjHy8J5KlBRIAxz2Xg8We-IJWNYj86bXFI1dkAWNNkzpe7khOEM_IElFOsqeR-cya0E21XR_u1TsBJOXRCDFq9c6LQkhMCuXCCJXgIyqzwWGI9XQ2vTtPV3JY39r9VLpCsmZ7ZNgfg137cc7lxV0tJeKMgtcjJeMd6boj9plyBuJdHBOB8…Gdqy8KsoX0JFK6E9_O5oLUcZotipZ7sfkT3FfucFrk9_TpGJBWi_hc9N0agBsBtgRLRzJsjc0fbWGwBFcdoa0a6iATSSjsBIxyi81rtHgmY16mE-HN2mgUOKeanjEiyXjO7iObAMLdcgAUvrZgldhFL3v0-M6TR6dWWm8g6Cg-HFeyVa2zMMkJgsqxDeyKR4fma2nibt-3xkYT4FHeCo1PPSXiHQlAXAA8MNCOPFdv_sM1fbW1OD5dXr8pc_spL8BchljHNWzSvkzscwhXuOjyKZxik5EiIjeAI0THjqMXQL87BRY3UQ2gHtlsYQcYjse5uG6eM5KAfIJr-bEmbybybg0aciZiw6p_-erqAT0nBsOJfvTJg.-nBDe9cZ7iSp_h-PxYVKew"
+
 # Force immediate save/load of history
 #PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
@@ -155,3 +158,6 @@ eval "$(starship init bash)"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# opencode
+export PATH=/home/sayat/.opencode/bin:$PATH

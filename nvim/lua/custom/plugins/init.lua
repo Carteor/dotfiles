@@ -43,4 +43,9 @@ return {
     { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
     { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
   },
+  'echasnovski/mini.nvim',
+  version = false,
+  config = function()
+    require('mini.surround').setup()
+  end,
 }

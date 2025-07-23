@@ -105,6 +105,16 @@ main() {
             run_timer $((short_break_minutes * 60)) "BREAK"
         fi
         chime
+
+        # Automatically pause and wait for manual resume
+        paused = true
+        update_tmux_status "PAUSED" ""
+        notify "Pomodoro" "Paused - press prefix + P to continue 🍅"
+        
+        # Wait here until unpaused
+        while $paused; do
+            sleep 1
+        done
     done
 }
 
