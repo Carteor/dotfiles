@@ -107,7 +107,7 @@ main() {
         chime
 
         # Automatically pause and wait for manual resume
-        paused = true
+        paused=true
         update_tmux_status "PAUSED" ""
         notify "Pomodoro" "Paused - press prefix + P to continue 🍅"
         
