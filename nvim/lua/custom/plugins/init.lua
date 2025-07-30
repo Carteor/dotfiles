@@ -66,4 +66,12 @@ return {
             vim.api.nvim_set_hl(0, 'MiniIndentscopeSymbol', { fg = '#555555', nocombine = true })
         end,
     },
+    {
+      "sphamba/smear-cursor.nvim",
+      opts = {},
+    },
+    {
+      "karb94/neoscroll.nvim",
+      opts = {},
+    }
  }
