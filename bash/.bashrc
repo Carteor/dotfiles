@@ -122,36 +122,28 @@ export PATH="/home/sayat/.npm-global/bin:$PATH"
 export WAYLAND_DISPLAY=wayland-0
 export GEMINI_API_KEY="AIzaSyAsJ5EM6xBRAJiSREFQ0xOzuchE2S4h5sU"
 
-if [[ -z "$TMUX" ]]; then
-    tmux attach -t mysession || tmux new -s mysession
+# Auto-start tmux and attach to the most recently restored session
+if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
+  # If there is at least one tmux session running, attach to the first one
+  tmux has-session 2>/dev/null
+  if [ $? -eq 0 ]; then
+    exec tmux attach-session
+  else
+    exec tmux new-session
+  fi
 fi
 
+# Start the ssh-agent automatically
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/id_rsa
-    ssh-add ~/.ssh/etl-work-pc
 fi
 
 alias projects="cd ~/Documents/Projects"
-alias reload="source ~/.bashrc"
 
 # Use fzf to search command history (CTRL-R)
 if [[ -n $BASH_VERSION ]]; then
     source /usr/share/doc/fzf/examples/key-bindings.bash
 fi
-
-# --- Per-tmux-pane history ---
-#if [[ -n "$TMUX" ]]; then
-#  export HISTFILE="$HOME/.bash_history_tmux_$(tmux display-message -p '#{session_name}_#{window_index}_#{pane_index}')"
-#else
-#  export HISTFILE="$HOME/.bash_history"
-#fi
-
-# ChatGPT session token
-export TOKEN="eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..9uIYkn77NwiwiscU.mRkzha5y-cXyv4bWvE5L982svjYXlDYdj1I1X5w2URCTEm212AtP-Hx9eZ8JibssNQ9nS7Ye-SzgcGvuCDntoWBDcY3xHINzNzMjhckfckNCiQyVISTXk5YZG7K8y3a10-j4IQDzrfvnWF_Bp5o7ucX3qfi3FqgNuZBzkXyavB_orWT0PoWUBiyUIhbizBWbsppd6iBDCAoyUsPit4MVOJiP00HfiXFwhf-vWw-XPNwuQ8Rn4KuLjHy8J5KlBRIAxz2Xg8We-IJWNYj86bXFI1dkAWNNkzpe7khOEM_IElFOsqeR-cya0E21XR_u1TsBJOXRCDFq9c6LQkhMCuXCCJXgIyqzwWGI9XQ2vTtPV3JY39r9VLpCsmZ7ZNgfg137cc7lxV0tJeKMgtcjJeMd6boj9plyBuJdHBOB8…Gdqy8KsoX0JFK6E9_O5oLUcZotipZ7sfkT3FfucFrk9_TpGJBWi_hc9N0agBsBtgRLRzJsjc0fbWGwBFcdoa0a6iATSSjsBIxyi81rtHgmY16mE-HN2mgUOKeanjEiyXjO7iObAMLdcgAUvrZgldhFL3v0-M6TR6dWWm8g6Cg-HFeyVa2zMMkJgsqxDeyKR4fma2nibt-3xkYT4FHeCo1PPSXiHQlAXAA8MNCOPFdv_sM1fbW1OD5dXr8pc_spL8BchljHNWzSvkzscwhXuOjyKZxik5EiIjeAI0THjqMXQL87BRY3UQ2gHtlsYQcYjse5uG6eM5KAfIJr-bEmbybybg0aciZiw6p_-erqAT0nBsOJfvTJg.-nBDe9cZ7iSp_h-PxYVKew"
-
-# Force immediate save/load of history
-#PROMPT_COMMAND="history -a; history -n; $PROMPT_COMMAND"
 
 eval "$(starship init bash)"
 
