@@ -1,5 +1,4 @@
 -- custom/plugins/lsp.lua - LSP plugin specification for Lazy.nvim
-
 return {
     -- LSP Configuration
     {
@@ -10,6 +9,9 @@ return {
             "williamboman/mason-lspconfig.nvim",
         },
         config = function()
+            -- Extend LSP capabilities with nvim-cmp
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
             -- LSP key mappings - only set when LSP is attached
             local function on_attach(client, bufnr)
                 local opts = { buffer = bufnr, silent = true }
@@ -39,6 +41,7 @@ return {
 
             -- Configure Mason LSP Config with explicit handlers
             require("mason-lspconfig").setup({
+                capabilities = capabilities,
                 ensure_installed = {
                     "lua_ls",
                     "pyright", -- Only pyright, NOT pylsp
@@ -57,6 +60,7 @@ return {
                         end
 
                         require("lspconfig")[server_name].setup({
+                            capabilities = capabilities,
                             on_attach = on_attach,
                         })
                     end,
@@ -64,6 +68,7 @@ return {
                     -- Custom handlers for specific servers
                     ["lua_ls"] = function()
                         require("lspconfig").lua_ls.setup({
+                            capabilities = capabilities,
                             on_attach = on_attach,
                             settings = {
                                 Lua = {
@@ -96,6 +101,7 @@ return {
 
                         require("lspconfig").pyright.setup({
                             on_attach = on_attach,
+                            capabilities = capabilities,
                             settings = {
                                 python = {
                                     pythonPath = chosen_python,
@@ -112,6 +118,7 @@ return {
 
                     ["ruff"] = function()
                         require("lspconfig").ruff.setup({
+                            capabilities = capabilities,
                             on_attach = function(client, bufnr)
                                 -- Disable hover in favor of Pyright
                                 client.server_capabilities.hoverProvider = false
@@ -122,6 +129,7 @@ return {
 
                     ["html"] = function()
                         require("lspconfig").html.setup({
+                            capabilities = capabilities,
                             on_attach = on_attach,
                             filetypes = { "html", "templ" },
                             init_options = {
@@ -137,6 +145,7 @@ return {
 
                     ["sqlls"] = function()
                         require("lspconfig").sqlls.setup({
+                            capabilities = capabilities,
                             on_attach = on_attach,
                             cmd = { "sql-language-server", "up", "--method", "stdio" },
                             filetypes = { "sql", "mysql" },
