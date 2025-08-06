@@ -122,15 +122,16 @@ export PATH="/home/sayat/.npm-global/bin:$PATH"
 export WAYLAND_DISPLAY=wayland-0
 export GEMINI_API_KEY="AIzaSyAsJ5EM6xBRAJiSREFQ0xOzuchE2S4h5sU"
 
-# Auto-start tmux and attach to the most recently restored session
+# Safely auto-start tmux if not already inside tmux
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
-  # If there is at least one tmux session running, attach to the first one
-  tmux has-session 2>/dev/null
-  if [ $? -eq 0 ]; then
-    exec tmux attach-session
+  if tmux has-session 2>/dev/null; then
+    tmux attach-session
   else
-    exec tmux new-session
+    tmux new-session
   fi
+
+  # Ensure shell doesn’t exit if tmux fails
+  # Remove `exec` so user returns to shell if tmux exits
 fi
 
 # Start the ssh-agent automatically
