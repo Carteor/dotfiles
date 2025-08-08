@@ -111,10 +111,11 @@ export GEMINI_API_KEY="AIzaSyAsJ5EM6xBRAJiSREFQ0xOzuchE2S4h5sU"
 
 # Safely auto-start tmux if not already inside tmux
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
-  if tmux has-session 2>/dev/null; then
-    tmux attach-session
+    SESSION_NAME="main"
+  if tmux has-session -t $SESSION_NAME 2>/dev/null; then
+    tmux attach -t $SESSION_NAME
   else
-    tmux new-session
+    tmux new -s $SESSION_NAME
   fi
 fi
 
