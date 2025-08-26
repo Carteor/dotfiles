@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Default durations (in minutes)
-work_minutes=25
+work_minutes=30
 short_break_minutes=5
 long_break_minutes=15
 cycles_before_long_break=4

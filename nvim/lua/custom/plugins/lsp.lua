@@ -48,7 +48,6 @@ return {
                     "ruff",
                     "html",
                     "marksman",
-                    "sqlls",
                 },
                 automatic_installation = true,
                 handlers = {
@@ -140,18 +139,6 @@ return {
                                 },
                                 provideFormatter = true
                             }
-                        })
-                    end,
-
-                    ["sqlls"] = function()
-                        require("lspconfig").sqlls.setup({
-                            capabilities = capabilities,
-                            on_attach = on_attach,
-                            cmd = { "sql-language-server", "up", "--method", "stdio" },
-                            filetypes = { "sql", "mysql" },
-                            root_dir = function()
-                                return vim.loop.cwd()
-                            end,
                         })
                     end,
                 }

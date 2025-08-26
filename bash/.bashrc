@@ -81,7 +81,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 # Nvim
-alias v="nvim"
+alias nv="nvim"
 alias telegram='nohup telegram > /dev/null 2>&1 &'
 alias firefox='nohup firefox > /dev/null 2>&1 &'
 
@@ -108,6 +108,8 @@ export PATH="$PATH:/home/carte/.local/bin"
 export PATH="/home/sayat/.npm-global/bin:$PATH"
 export WAYLAND_DISPLAY=wayland-0
 export GEMINI_API_KEY="AIzaSyAsJ5EM6xBRAJiSREFQ0xOzuchE2S4h5sU"
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Safely auto-start tmux if not already inside tmux
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
