@@ -113,7 +113,7 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 
 # Safely auto-start tmux if not already inside tmux
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
-    SESSION_NAME="main"
+    SESSION_NAME="mysession"
   if tmux has-session -t $SESSION_NAME 2>/dev/null; then
     tmux attach -t $SESSION_NAME
   else
@@ -141,3 +141,4 @@ export NVM_DIR="$HOME/.nvm"
 
 # opencode
 export PATH=/home/sayat/.opencode/bin:$PATH
+export PATH="$HOME/minio-binaries:$PATH"

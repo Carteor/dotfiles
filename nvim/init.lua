@@ -15,8 +15,8 @@ vim.opt.tabstop = 4        -- number of visual spaces per tab
 vim.opt.softtabstop = 4    -- spaces inserted when hitting Tab
 vim.opt.shiftwidth = 4     -- spaces used for autoindent
 vim.opt.expandtab = true   -- use spaces instead of tab characters
-vim.opt.smartindent = true -- smarter auto-indenting
-vim.opt.autoindent = true  -- keep indent from current line
+-- vim.opt.smartindent = true -- smarter auto-indenting
+-- vim.opt.autoindent = true  -- keep indent from current line
 
 -- Make line numbers default
 vim.opt.number = true
@@ -468,8 +468,8 @@ require('lazy').setup({
     -- require 'kickstart.plugins.indent_line',
     -- require 'kickstart.plugins.lint',
     -- require 'kickstart.plugins.autopairs',
-    require 'kickstart.plugins.neo-tree',
-    require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+    -- require 'kickstart.plugins.neo-tree',
+    -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
     -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
     --    This is the easiest way to modularize your config.
