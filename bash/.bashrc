@@ -109,11 +109,13 @@ export PATH='/home/sayat/.duckdb/cli/latest':$PATH
 
 # Safely auto-start tmux if not already inside tmux
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
-  if tmux list-sessions 2>/dev/null | grep -q .; then
-    tmux attach
-  else
-    tmux new -s main
-  fi
+    # Only start tmux if no server exists
+    if ! pgrep -x tmux >/dev/null 2>&1; then
+        tmux start-server >/dev/null 2>&1
+        tmux new-session -A -s main >/dev/null 2>&1 || tmux new -s main
+    else
+        tmux attach -t $(tmux list-sessions -F '#S' | head -n1)
+    fi
 fi
 
 # --- Persistent SSH agent setup ---
