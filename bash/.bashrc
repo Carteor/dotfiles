@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -120,10 +116,27 @@ if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
   fi
 fi
 
-# Start the ssh-agent automatically
-if [ -z "$SSH_AUTH_SOCK" ]; then
-    eval "$(ssh-agent -s)"
+# --- Persistent SSH agent setup ---
+SSH_ENV="$HOME/.ssh/environment"
+
+start_agent() {
+    echo "Starting new ssh-agent..."
+    (umask 066; ssh-agent > "$SSH_ENV")
+    . "$SSH_ENV" > /dev/null
+    # Auto-add key if available
+    ssh-add ~/.ssh/id_rsa 2>/dev/null
+}
+
+# Reuse existing agent if possible
+if [ -f "$SSH_ENV" ]; then
+    . "$SSH_ENV" > /dev/null
+    if ! ssh-add -l &>/dev/null; then
+        start_agent
+    fi
+else
+    start_agent
 fi
+
 
 alias projects="cd ~/Documents/Projects"
 
