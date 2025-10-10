@@ -113,11 +113,10 @@ export PATH='/home/sayat/.duckdb/cli/latest':$PATH
 
 # Safely auto-start tmux if not already inside tmux
 if [ -z "$TMUX" ] && [ -n "$PS1" ] && command -v tmux >/dev/null 2>&1; then
-    SESSION_NAME="mysession"
-  if tmux has-session -t $SESSION_NAME 2>/dev/null; then
-    tmux attach -t $SESSION_NAME
+  if tmux list-sessions 2>/dev/null | grep -q .; then
+    tmux attach
   else
-    tmux new -s $SESSION_NAME
+    tmux new -s main
   fi
 fi
 
