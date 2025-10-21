@@ -144,7 +144,7 @@ if grep -qi microsoft /proc/version; then
     alias projects="cd /mnt/e/Projects/"
 else
     # Native Linux
-    alias projects = "cd ~/Projects"
+    alias projects="cd ~/Projects"
 fi
 
 # Use fzf to search command history (CTRL-R)
