@@ -46,6 +46,40 @@ case $PACKAGE_MANAGER in
     ;;
 esac
 
+# Ensure C compiler is installed
+echo "Checking for C compiler..."
+
+if ! command_exists gcc && ! command_exists clang && ! command_exists zig; then
+    echo "Installing C compiler toolchain..."
+    case $PACKAGE_MANAGER in
+    "apt")
+        sudo apt install -y build-essential
+        ;;
+    "yum" | "dnf")
+        sudo $PACKAGE_MANAGER groupinstall -y "Development Tools" || sudo $PACKAGE_MANAGER install -y gcc make
+        ;;
+    "pacman")
+        sudo pacman -S --noconfirm base-devel
+        ;;
+    "brew")
+        brew install gcc
+        ;;
+    *)
+        echo "Warning: Unknown package manager. Please install a compiler manually (gcc or clang)."
+        ;;
+    esac
+else
+    echo "C compiler already installed."
+fi
+
+# Install npm
+apt install npm
+
+# Install right Neovim version
+sudo add-apt-repository ppa:neovim-ppa/unstable -y
+sudo apt update
+sudo apt install -y neovim
+
 # Install JetBrains Mono Nerd Font
 echo "Installing JetBrains Mono Nerd Font..."
 FONT_DIR="$HOME/.local/share/fonts"
