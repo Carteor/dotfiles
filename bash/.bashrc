@@ -4,6 +4,10 @@ case $- in
       *) return;;
 esac
 
+# Always restore cursor on shell exit
+trap 'tput cnorm' EXIT
+
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 HISTSIZE=10000
