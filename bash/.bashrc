@@ -3,7 +3,9 @@
 
 
 # Always restore cursor on shell exit
-trap 'tput cnorm' EXIT
+if [[ -z "$TMUX" && -t 1 ]]; then
+    trap 'tput cnorm' EXIT
+fi
 
 
 # append to the history file, don't overwrite it
