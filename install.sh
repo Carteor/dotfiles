@@ -229,6 +229,14 @@ else
     echo "Warning: ~/dotfiles/starship/starship.toml not found"
 fi
 
+echo "Linking wezterm config..."
+if [ -f ~/dotfiles/wezterm/wezterm.lua ]; then
+    ln -sf ~/dotfiles/wezterm/wezterm.lua ~/.wezterm.lua
+    echo "✓ WezTerm config linked"
+else
+    echo "Warning: ~/dotfiles/wezterm/wezterm.lua not found"
+fi
+
 echo "Dotfiles installed successfully!"
 echo "Please restart your terminal or run: source ~/.bashrc"
 echo "Refresh tmux: tmux source-file ~/.tmux.conf,"

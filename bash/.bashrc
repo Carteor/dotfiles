@@ -1,5 +1,5 @@
 # If not running interactively, don't do anything
-[[ $- == *i* ]] || return 0
+#[[ $- == *i* ]] || return 0
 
 
 # Always restore cursor on shell exit
