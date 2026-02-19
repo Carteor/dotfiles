@@ -507,4 +507,4 @@ require('lazy').setup({
 vim.opt.clipboard = 'unnamedplus'
 
 -- Load the keybinding file
-require 'kickstart.plugins.keymap'
+require 'custom.keymaps'

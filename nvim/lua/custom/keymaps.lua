@@ -20,5 +20,5 @@ vim.keymap.set('n', '<F5>', function()
   end
 
   -- Send the Python command to the terminal
-  python_term:send('python3 ' .. file, true)
+  python_term:send('uv run python ' .. file, true)
 end, { noremap = true, silent = true })

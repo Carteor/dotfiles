@@ -3,9 +3,9 @@
 
 
 # Always restore cursor on shell exit
-if [[ -z "$TMUX" && -t 1 ]]; then
-    trap 'tput cnorm' EXIT
-fi
+# if [[ -z "$TMUX" && -t 1 ]]; then
+#     trap 'tput cnorm' EXIT
+# fi
 
 
 # append to the history file, don't overwrite it
@@ -110,7 +110,6 @@ export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 export PATH="$PATH:/home/carte/.local/bin"
 export PATH="/home/sayat/.npm-global/bin:$PATH"
 export WAYLAND_DISPLAY=wayland-0
-export GEMINI_API_KEY="AIzaSyAsJ5EM6xBRAJiSREFQ0xOzuchE2S4h5sU"
 export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH='/home/sayat/.duckdb/cli/latest':$PATH
 
@@ -126,25 +125,25 @@ export PATH='/home/sayat/.duckdb/cli/latest':$PATH
 # fi
 
 # --- Persistent SSH agent setup ---
-SSH_ENV="$HOME/.ssh/environment"
+# SSH_ENV="$HOME/.ssh/environment"
 
-start_agent() {
-    echo "Starting new ssh-agent..."
-    (umask 066; ssh-agent > "$SSH_ENV")
-    . "$SSH_ENV" > /dev/null
-    # Auto-add key if available
-    ssh-add ~/.ssh/id_rsa 2>/dev/null
-}
+# start_agent() {
+#     echo "Starting new ssh-agent..."
+#     (umask 066; ssh-agent > "$SSH_ENV")
+#     . "$SSH_ENV" > /dev/null
+#     # Auto-add key if available
+#     ssh-add ~/.ssh/id_rsa 2>/dev/null
+# }
 
 # Reuse existing agent if possible
-if [ -f "$SSH_ENV" ]; then
-    . "$SSH_ENV" > /dev/null
-    if ! ssh-add -l &>/dev/null; then
-        start_agent
-    fi
-else
-    start_agent
-fi
+# if [ -f "$SSH_ENV" ]; then
+#     . "$SSH_ENV" > /dev/null
+#     if ! ssh-add -l &>/dev/null; then
+#         start_agent
+#     fi
+# else
+#     start_agent
+# fi
 
 if grep -qi microsoft /proc/version; then
     # WSL detected
