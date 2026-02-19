@@ -8,6 +8,8 @@ local python_term = Terminal:new {
 }
 
 vim.keymap.set('n', '<F5>', function()
+    vim.cmd('write')
+
   local file = vim.fn.expand '%:p' -- Get full path of the current file
   if file == '' then
     print 'No file name found!' -- Prevents errors when no file is open
