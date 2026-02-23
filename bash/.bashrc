@@ -1,3 +1,7 @@
+case $- in
+    *i*) ;;
+    *) return ;;
+esac
 # If not running interactively, don't do anything
 #[[ $- == *i* ]] || return 0
 
